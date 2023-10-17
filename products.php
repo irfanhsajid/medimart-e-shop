@@ -39,7 +39,7 @@ include 'components/add_cart.php';
 
 <div class="heading">
    <h3  data-aos="fade-down" data-aos-duration="1200">our products</h3>
-   <p><a href="home.php">home</a> <span> / products</span></p>
+   <p><a href="index.php">home</a> <span> / products</span></p>
 </div>
 
 <!-- products section starts  -->
@@ -50,12 +50,15 @@ include 'components/add_cart.php';
 
    <div class="box-container">
 
+
       <?php
          $select_products = $conn->prepare("SELECT * FROM `products`");
          $select_products->execute();
          if($select_products->rowCount() > 0){
             while($fetch_products = $select_products->fetch(PDO::FETCH_ASSOC)){
       ?>
+
+
       <form action="" method="post" class="box"  data-aos="zoom-in-down" data-aos-duration="1000">
          <input type="hidden" name="pid" value="<?= $fetch_products['id']; ?>">
          <input type="hidden" name="name" value="<?= $fetch_products['name']; ?>">
@@ -63,6 +66,7 @@ include 'components/add_cart.php';
          <input type="hidden" name="image" value="<?= $fetch_products['image']; ?>">
          <a href="quick_view.php?pid=<?= $fetch_products['id']; ?>" class="fas fa-eye"></a>
          <button type="submit" class="fas fa-shopping-cart" name="add_to_cart"></button>
+         
          <img src="uploaded_img/<?= $fetch_products['image']; ?>" alt="">
          <a href="category.php?category=<?= $fetch_products['category']; ?>" class="cat"><?= $fetch_products['category']; ?></a>
          <div class="name"><?= $fetch_products['name']; ?></div>

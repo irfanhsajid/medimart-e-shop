@@ -23,6 +23,8 @@ if(isset($_POST['submit'])){
       }else{
          $update_name = $conn->prepare("UPDATE `admin` SET name = ? WHERE id = ?");
          $update_name->execute([$name, $admin_id]);
+         $message[] = 'username updated successfully!';
+
       }
    }
 

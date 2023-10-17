@@ -65,7 +65,7 @@ if(isset($_POST['send'])){
 
 <div class="heading">
    <h3 data-aos="zoom-in" data-aos-duration="1500">contact us</h3>
-   <p><a href="home.php">home</a> <span> / contact</span></p>
+   <p><a href="index.php">home</a> <span> / contact</span></p>
 </div>
 
 <!-- contact section starts  -->

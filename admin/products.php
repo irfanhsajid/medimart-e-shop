@@ -115,6 +115,7 @@ if(isset($_GET['delete'])){
       if($show_products->rowCount() > 0){
          while($fetch_products = $show_products->fetch(PDO::FETCH_ASSOC)){  
    ?>
+
    <div class="box">
       <img src="../uploaded_img/<?= $fetch_products['image']; ?>" alt="">
       <div class="flex">
@@ -142,27 +143,6 @@ if(isset($_GET['delete'])){
 
 <!-- custom js file link  -->
 <script src="../js/admin_script.js"></script>
-
-
-<!-- jquery Cdn -->
-<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-
-<script type="text/javascript">
-$(document).ready(function() {
-   $('#categorySelect').change(function() {
-      var selectedOption = $(this).val();
-
-      if (selectedOption === 'new') {
-         $(this).css('color', 'blue');
-      } else if (selectedOption === 'used') {
-         $(this).css('color', 'red');
-      } else {
-         $(this).css('color', ''); // Reset to default color if none selected
-      }
-   });
-});
-
-</script> -->
 
 </body>
 </html>

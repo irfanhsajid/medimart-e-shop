@@ -8,11 +8,12 @@ if(isset($_SESSION['user_id'])){
    $user_id = $_SESSION['user_id'];
 }else{
    $user_id = '';
-   header('location:home.php');
+   header('location:index.php');
 };
 
 if(isset($_POST['submit'])){
    $address = $_POST['flat'] .', '.$_POST['building'].', '.$_POST['area'].', '.$_POST['town'] .', '. $_POST['city'] .', '. $_POST['state'] .', '. $_POST['country'] .' - '. $_POST['pin_code'];
+
    $address = filter_var($address, FILTER_SANITIZE_STRING);
 
    $update_address = $conn->prepare("UPDATE `users` SET address = ? WHERE id = ?");
@@ -50,8 +51,8 @@ if(isset($_POST['submit'])){
 
    <form action="" method="post">
       <h3>your address</h3>
-      <input type="text" class="box" placeholder="flat no."  maxlength="50" name="flat">
-      <input type="text" class="box" placeholder="building no." maxlength="50" name="building">
+      <input type="text" class="box" placeholder="flat no." maxlength="50" name="flat">
+      <input type="text" class="box" placeholder="building no."maxlength="50" name="building">
       <input type="text" class="box" placeholder="area name" required maxlength="50" name="area">
       <input type="text" class="box" placeholder="town name" required maxlength="50" name="town">
       <input type="text" class="box" placeholder="city name" required maxlength="50" name="city">
@@ -64,20 +65,7 @@ if(isset($_POST['submit'])){
 </section>
 
 
-
-
-
-
-
-
-
-
 <?php include 'components/footer.php' ?>
-
-
-
-
-
 
 
 <!-- custom js file link  -->

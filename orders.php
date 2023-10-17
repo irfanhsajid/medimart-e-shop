@@ -10,6 +10,9 @@ if(isset($_SESSION['user_id'])){
    $user_id = '';
    header('location:login.php');
 };
+$user_id = $_SESSION['user_id'];
+$cookie_name = 'user_name_' . $user_id;
+$user_name = isset($_COOKIE[$cookie_name]) ? $_COOKIE[$cookie_name] : 'Guest';
 
 ?>
 
@@ -37,12 +40,12 @@ if(isset($_SESSION['user_id'])){
 
 <div class="heading">
    <h3 data-aos="zoom-in" data-aos-duration="1300">orders</h3>
-   <p><a href="home.php">home</a> <span> / orders</span></p>
+   <p><a href="index.php">home</a> <span> / orders</span></p>
 </div>
 
 <section class="orders">
 
-   <h1 class="title">your orders</h1>
+   <h1 class="title"> <span style="color:green"> <?=$user_name;?>'s</span> orders</h1>
 
    <div class="box-container">
 

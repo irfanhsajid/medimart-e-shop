@@ -39,7 +39,7 @@ if(isset($_SESSION['user_id'])){
 
 <div class="heading">
    <h3 data-aos="zoom-in" data-aos-duration="1500">about us</h3>
-   <p><a href="home.php">home</a> <span> / about</span></p>
+   <p><a href="index.php">home</a> <span> / about</span></p>
 </div>
 
 <!-- about section starts  -->

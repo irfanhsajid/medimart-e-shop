@@ -35,10 +35,10 @@ include 'components/add_cart.php';
 <!-- header section ends -->
 
 <!-- search form section starts  -->
-<section class="search-form" data-aos="zoom-in" data-aos-duration="1000">
+<section class="search-form" data-aos="zoom-in" data-aos-duration="700">
    <form action="" method="post" > 
       <!-- implementing livesearch here -->
-      <input type="text" name="search-box" placeholder="search here..." class="box" id="live_search_field" autocomplete="off">
+      <input type="text" name="search-box" placeholder="search product name, price, category..." class="box" id="live_search_field" autocomplete="off">
       <button class="fas fa-search"></button>
    </form>
 </section>

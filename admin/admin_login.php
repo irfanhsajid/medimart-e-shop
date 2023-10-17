@@ -17,6 +17,12 @@ if(isset($_POST['submit'])){
    if($select_admin->rowCount() > 0){
       $fetch_admin_id = $select_admin->fetch(PDO::FETCH_ASSOC);
       $_SESSION['admin_id'] = $fetch_admin_id['id'];
+
+       // Set a cookie for the admin's name
+       $admin_name = $fetch_admin_id['name'];
+       setcookie('admin_name', $admin_name, time() + (86400 * 30), "/"); // Cookie valid for 30 days
+ 
+
       header('location:dashboard.php');
    }else{
       $message[] = 'incorrect username or password!';
@@ -71,16 +77,6 @@ if(isset($message)){
 </section>
 
 <!-- admin login form section ends -->
-
-
-
-
-
-
-
-
-
-
 
 </body>
 </html>

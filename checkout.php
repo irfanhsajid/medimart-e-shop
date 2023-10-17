@@ -13,7 +13,7 @@ if(isset($_SESSION['user_id'])){
    $user_id = $_SESSION['user_id'];
 }else{
    $user_id = '';
-   header('location:home.php');
+   header('location:index.php');
 };
 
 if(!empty($_GET['session_id'])){
@@ -170,7 +170,7 @@ else{
 
 <div class="heading">
    <h3 data-aos="zoom-in" data-aos-duration="1100">checkout</h3>
-   <p><a href="home.php">home</a> <span> / checkout</span></p>
+   <p><a href="index.php">home</a> <span> / checkout</span></p>
 </div>
 
 <section class="checkout">
@@ -217,14 +217,13 @@ else{
       <p><i class="fas fa-envelope"></i><span><?= $fetch_profile['email'] ?></span></p>
       <a href="update_profile.php" class="btn">update info</a>
       <h3>delivery address</h3>
-      <p><i class="fas fa-map-marker-alt"></i><span><?php if($fetch_profile['address'] == ''){echo 'please enter your address';}else{echo $fetch_profile['address'];} ?></span></p>
+      <p><i class="fas fa-map-marker-alt"></i><span><?php if($fetch_profile['address'] == ''){echo 'update your address <span style="color:red"> mandatory </span>';}else{echo $fetch_profile['address'];} ?></span></p>
       <a href="update_address.php" class="btn">update address</a>
       <select name="method" class="box" required>
          <option value="" disabled selected>select payment method --</option>
          <option value="cash on delivery">cash on delivery</option>
          <option value="online Payment">online</option>
-         <!-- <option value="paytm">paytm</option>
-         <option value="paypal">paypal</option> -->
+         
       </select>
       <input type="submit" value="place order" class="btn <?php if($fetch_profile['address'] == ''){echo 'disabled';} ?>" style="width:100%; background:var(--red); color:var(--white);" name="submit">
    </div>

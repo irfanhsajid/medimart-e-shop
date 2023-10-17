@@ -23,6 +23,17 @@ if(isset($_POST['submit'])){
    $cpass = sha1($_POST['cpass']);
    $cpass = filter_var($cpass, FILTER_SANITIZE_STRING);
 
+   // $name = $_POST['name'];
+   // $name = filter_var($name, FILTER_SANITIZE_STRING, FILTER_FLAG_NO_ENCODE_QUOTES);
+   // $email = $_POST['email'];
+   // $email = filter_var($email, FILTER_SANITIZE_STRING, FILTER_FLAG_NO_ENCODE_QUOTES);
+   // $number = $_POST['number'];
+   // $number = filter_var($number, FILTER_SANITIZE_STRING, FILTER_FLAG_NO_ENCODE_QUOTES);
+   // $pass = sha1($_POST['pass']);
+   // $pass = filter_var($pass, FILTER_SANITIZE_STRING, FILTER_FLAG_NO_ENCODE_QUOTES);
+   // $cpass = sha1($_POST['cpass']);
+   // $cpass = filter_var($cpass, FILTER_SANITIZE_STRING, FILTER_FLAG_NO_ENCODE_QUOTES);
+   
    $select_user = $conn->prepare("SELECT * FROM `users` WHERE email = ? OR number = ?");
    $select_user->execute([$email, $number]);
    $row = $select_user->fetch(PDO::FETCH_ASSOC);
@@ -38,9 +49,17 @@ if(isset($_POST['submit'])){
          $select_user = $conn->prepare("SELECT * FROM `users` WHERE email = ? AND password = ?");
          $select_user->execute([$email, $pass]);
          $row = $select_user->fetch(PDO::FETCH_ASSOC);
+       
          if($select_user->rowCount() > 0){
+            $message[] = 'Registration Successful!';
             $_SESSION['user_id'] = $row['id'];
-            header('location:home.php');
+            
+           // Set a cookie for the user's name with a unique name using the user's ID
+             $user_name = $row['name'];
+             $cookie_name = 'user_name_' . $row['id']; // Unique cookie name
+            setcookie($cookie_name, $user_name, time() + (86400 * 30), "/"); // Cookie valid for 30 days
+            header('location:index.php');
+          
          }
       }
    }
@@ -78,7 +97,7 @@ if(isset($_POST['submit'])){
       <h3>register now</h3>
       <input type="text" name="name" required placeholder="enter your name" class="box" maxlength="50">
       <input type="email" name="email" required placeholder="enter your email" class="box" maxlength="50" oninput="this.value = this.value.replace(/\s/g, '')">
-      <input type="number" name="number" required placeholder="enter your number" class="box" min="0" max="9999999999" maxlength="10">
+      <input type="number" name="number" required placeholder="enter your 11 digit number" class="box" min="0" max="99999999999" maxlength="11">
       <input type="password" name="pass" required placeholder="enter your password" class="box" maxlength="50" oninput="this.value = this.value.replace(/\s/g, '')">
       <input type="password" name="cpass" required placeholder="confirm your password" class="box" maxlength="50" oninput="this.value = this.value.replace(/\s/g, '')">
       <input type="submit" value="register now" name="submit" class="btn">
@@ -86,15 +105,6 @@ if(isset($_POST['submit'])){
    </form>
 
 </section>
-
-
-
-
-
-
-
-
-
 
 
 <?php include 'components/footer.php'; ?>

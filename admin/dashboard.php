@@ -9,6 +9,12 @@ $admin_id = $_SESSION['admin_id'];
 if(!isset($admin_id)){
    header('location:admin_login.php');
 }
+// Retrieve the user name from the cookie
+$admin_name= $_COOKIE['admin_name'];
+
+// $user_name = $_COOKIE['name'];
+
+
 
 ?>
 
@@ -35,13 +41,14 @@ if(!isset($admin_id)){
 
 <section class="dashboard">
 
-   <h1 class="heading">dashboard</h1>
+<!-- Displaying the Admin Name From Cookie -->
+   <h5 class="heading"> Assalamu Alaikum *,*   <br> ~ <p style="color:red;"> <?= $admin_name; ?></p> </h5>
 
    <div class="box-container">
 
    <div class="box">
       <h3>welcome!</h3>
-      <p><?= $fetch_profile['name']; ?></p>
+      <p><?= $admin_name; ?></p> <!-- Displaying  the user name from cookies -->
       <a href="update_profile.php" class="btn">update profile</a>
    </div>
 
@@ -54,7 +61,7 @@ if(!isset($admin_id)){
             $total_pendings += $fetch_pendings['total_price'];
          }
       ?>
-      <h3><span>$</span><?= $total_pendings; ?><span>/-</span></h3>
+      <h3><span></span><?= $total_pendings; ?><span>/-</span></h3>
       <p>total pendings</p>
       <a href="placed_orders.php" class="btn">see orders</a>
    </div>
@@ -68,7 +75,7 @@ if(!isset($admin_id)){
             $total_completes += $fetch_completes['total_price'];
          }
       ?>
-      <h3><span>$</span><?= $total_completes; ?><span>/-</span></h3>
+      <h3><span></span><?= $total_completes; ?><span>/-</span></h3>
       <p>total completes</p>
       <a href="placed_orders.php" class="btn">see orders</a>
    </div>
