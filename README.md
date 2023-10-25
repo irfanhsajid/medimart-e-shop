@@ -22,7 +22,7 @@ To get started with the project, follow these steps:
 1. **Clone the Repository**
    - clone the repository and put it inside htdocs folder of xampp
    ```bash
-   git clone https://github.com/irfanhsajid/CSE327-Group1-Project.git
+   git clone https://github.com/irfanhsajid/medimart-e-shop.git
 2. **Database Setup**
 
    - Create a database medimart_db
@@ -35,7 +35,7 @@ To get started with the project, follow these steps:
 
 4. **Run The Application**
    - Start your local server (XAMPP)
-   - Open the browser and go to http://localhost/your-folder-name/index.php
+   - Open the browser and go to http://localhost/medimart-e-shop/index.php
 
 4. **Usage Application**
    - Create an account or log in if you already have one.
@@ -64,7 +64,7 @@ To get started with the project, follow these steps:
    - view all users feedbacks,
    - view and manage all the registered users and admins. 
 
-admin url: http://localhost/your-folder-name/admin/admin_login.php
+admin url: http://localhost/medimart-e-shop/admin/admin_login.php
 
 default username : admin
 
